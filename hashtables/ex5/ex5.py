@@ -1,4 +1,5 @@
 # Your code here
+import os
 
 
 
@@ -6,7 +7,20 @@ def finder(files, queries):
     """
     YOUR CODE HERE
     """
-    # Your code here
+    mapping = {}
+
+    for filename in files:
+        basename = os.path.basename(os.path.normpath(filename))
+        if basename in mapping:
+            mapping[basename].append(filename)
+        else:
+            mapping[basename] = [filename]
+    
+    result = []
+
+    for query in queries:
+        if query in mapping:
+            result += mapping[query]
 
     return result
 

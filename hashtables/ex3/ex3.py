@@ -2,8 +2,21 @@ def intersection(arrays):
     """
     YOUR CODE HERE
     """
-    # Your code here
+    array_count = len(arrays)
+    counter = {}
+    array_counter = {}
 
+    for array in arrays:
+        for i in range(len(array)):
+            if array[i] not in array_counter:
+                if array[i] in counter:
+                    counter[array[i]] += 1
+                else:
+                    counter[array[i]] = 1
+        array_counter = {}
+    
+    result = [key for (key, value) in counter.items() if value == array_count]
+    print(result)
     return result
 
 
